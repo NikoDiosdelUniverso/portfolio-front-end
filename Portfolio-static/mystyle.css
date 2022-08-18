@@ -1,0 +1,26 @@
+body {
+    color: #393d46;
+}
+.content-container {
+    background-color: #f7f7f7;
+    border-radius:10px;
+}
+.btn {
+    background-color: #393d46;
+    border-color: #393d46;
+    
+}
+.btn:hover {
+    background-color: black;
+    border-color: black;
+}
+.overlay {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #393d46;
+  }
+  .gatitos:hover .overlay {
+    opacity: 25%;
+  }
