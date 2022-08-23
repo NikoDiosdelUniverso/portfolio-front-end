@@ -1,0 +1,26 @@
+.content-container {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+  }
+  
+  .overlay {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #393d46;
+  }
+  
+  .gatitos:hover .overlay {
+    opacity: 25%;
+  }
+  
+  .pfpimg {
+    border-radius: 50%;
+  }
+  
+  .list-group-item {
+    background-color: #f7f7f7;
+  }
+  
+  
