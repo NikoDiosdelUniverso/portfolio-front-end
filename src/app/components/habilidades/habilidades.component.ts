@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from 'src/app/services/portfolio.service';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-habilidades',
@@ -7,6 +11,9 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: ['./habilidades.component.css']
 })
 export class HabilidadesComponent implements OnInit {
+  faPenToSquare = faPenToSquare;
+  faPlusCircle = faPlusCircle;
+  faXmark = faXmark;
   skillslist:any;
   constructor(private datosPortfolio:PortfolioService) { }
 
