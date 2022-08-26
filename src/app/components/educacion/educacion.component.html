@@ -10,10 +10,22 @@
    </div>
 
 </div>
+
 <div class="content-container p-3 mb-5 shadow">
-   <p>
-      Agregar educacion
-   </p>
+   <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let educacion of educacionlist">
+         <div class="card">
+            <div class="card-header">
+             <h5>{{educacion.titulo}}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+               <li class="list-group-item"><img [src]="educacion.logo" style="height: 70px; background-color: black;" class="m-2 rounded float-end">{{educacion.establecimiento}} </li>
+               <li class="list-group-item">{{educacion.inicio}} - {{educacion.fin}} </li>
+            </ul>
+         </div>
+      </li>
+   </ul>
+
    <button type="button" class="btn">
       <fa-icon [icon]="faPlusCircle"></fa-icon>
    </button>

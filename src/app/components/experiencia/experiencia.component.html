@@ -6,9 +6,20 @@
    <h4>Experiencia</h4>
      </div>
      <div class="content-container p-3 mb-5 shadow">
-    <p>
-Agregar experiencia
-    </p>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let experiencia of experiencialist">
+           <div class="card">
+              <div class="card-header">
+               <h5>{{experiencia.posicion}}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+                 <li class="list-group-item"><img [src]="experiencia.logo" style="height: 70px; background-color: black;" class="m-2 rounded float-end">{{experiencia.empresa}} </li>
+                 <li class="list-group-item">{{experiencia.inicio}} - {{experiencia.fin}} </li>
+                 <li class="list-group-item">{{experiencia.descripcion}} </li>
+              </ul>
+           </div>
+        </li>
+     </ul>
     <button type="button" class="btn"><fa-icon [icon]="faPlusCircle"></fa-icon></button>
     </div>
    

@@ -13,3 +13,12 @@ body {
 .gatitos:hover .overlay {
   opacity: 25%;
 }
+
+.skillimage {
+height:50px;
+}
+
+.pfpimg {
+  height: 222px;
+  width: 222px;
+}
