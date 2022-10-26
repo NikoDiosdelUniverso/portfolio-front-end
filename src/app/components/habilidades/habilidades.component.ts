@@ -3,6 +3,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { habilidades } from 'src/app/model/persona.model';
 
 
 @Component({
@@ -15,12 +16,14 @@ export class HabilidadesComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
   skillslist:any;
+  habilidad: habilidades= new habilidades("","");
+
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
+    this.datosPortfolio.getHabilidades().subscribe(data =>{
       console.log(data); 
-      this.skillslist=data.habilidades;
+      this.habilidad=data;
     });
   }
 

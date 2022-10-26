@@ -1,6 +1,6 @@
 <div class="container-fluid content-container mb-5 shadow">
   <div class="container-fluid position-relative">
-    <img [src]="miPortfolio.banner" class="mw-100" alt="banner" />
+    <img [src]="persona.banner" class="mw-100" alt="banner" />
     <div class="position-absolute bottom-0 end-0">
       <button type="button" class="btn">
         <fa-icon [icon]="faPenToSquare"></fa-icon>
@@ -11,7 +11,7 @@
     <div class="row p-5 m-3">
       <div class="col-12 col-lg-4 text-center">
         <div class="position-relative ">
-          <img [src]="miPortfolio.foto" alt="pfp" class="pfpimg position-relative" />
+          <img [src]="persona.foto" alt="pfp" class="pfpimg position-relative" />
           <div class="position-absolute bottom-0 end-0">
             <button type="button" class="btn">
               <fa-icon [icon]="faPenToSquare"></fa-icon>
@@ -19,14 +19,14 @@
           </div>
         </div>
         <div>
-                  <h2 class="text-center">{{miPortfolio.nombre}}</h2>
-        <h3 class="text-center">{{miPortfolio.titulo}}</h3>
+                  <h2 class="text-center">{{persona.nombre}}{{persona.apellido}}</h2>
+        <h3 class="text-center">{{persona.titulo}}</h3>
         </div>
       </div>
       <div class="col-12 col-lg-8 position-relative pt-5">
           <h4 class="text-center">Sobre mi</h4>
           <p class="text-center">
-            {{miPortfolio.acercade}}
+            {{persona.descripcion}}
           </p>
           <div class="position-absolute bottom-50 end-0">
             <button type="button" class="btn">

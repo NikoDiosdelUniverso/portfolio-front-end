@@ -3,6 +3,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { educacion } from 'src/app/model/persona.model';
 
 @Component({
   selector: 'app-educacion',
@@ -14,12 +15,14 @@ export class EducacionComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
   educacionlist:any;
+  educacion: educacion = new educacion("","","","","","")
+
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
+    this.datosPortfolio.getEducacion().subscribe(data =>{
       console.log(data); 
-      this.educacionlist=data.educacion;
+      this.educacion=data;
     });
   }
 }

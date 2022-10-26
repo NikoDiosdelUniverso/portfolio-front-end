@@ -3,6 +3,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { experiencia } from 'src/app/model/persona.model';
 @Component({
   selector: 'app-experiencia',
   templateUrl: './experiencia.component.html',
@@ -13,12 +14,14 @@ export class ExperienciaComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
   experiencialist:any;
+  experiencia: experiencia= new experiencia("","","","","","")
+
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.obtenerDatos().subscribe(data =>{
+    this.datosPortfolio.getExperiencia().subscribe(data =>{
       console.log(data); 
-      this.experiencialist=data.experiencia;
+      this.experiencia=data;
     });
   }
 }
