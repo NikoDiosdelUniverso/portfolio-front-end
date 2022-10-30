@@ -15,15 +15,15 @@ export class HabilidadesComponent implements OnInit {
   faPenToSquare = faPenToSquare;
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
-  skillslist:any;
-  habilidad: habilidades= new habilidades("","");
+  skillslist:habilidades[] = []
+  
 
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
     this.datosPortfolio.getHabilidades().subscribe(data =>{
       console.log(data); 
-      this.habilidad=data;
+      this.skillslist=data;
     });
   }
 

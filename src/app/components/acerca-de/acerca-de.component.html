@@ -1,39 +1,75 @@
 <div class="container-fluid content-container mb-5 shadow">
   <div class="container-fluid position-relative">
-    <img [src]="persona.banner" class="mw-100" alt="banner" />
-    <div class="position-absolute bottom-0 end-0">
-      <button type="button" class="btn">
+    <img [src]="pers.banner" class="mw-100" alt="banner" />
+    <div>
+      <button type="button" class="btn position-absolute bottom-0 end-0 translate-middle-x" data-bs-toggle="collapse"
+        data-bs-target="#editarbanner" aria-expanded="false" aria-controls="collapseExample"
+        aria-label="Cambiar banner">
         <fa-icon [icon]="faPenToSquare"></fa-icon>
       </button>
     </div>
   </div>
+
+   <div class="collapse" id="editarbanner">
+      <div class="card card-body">
+        <form>
+          <app-editarbanner></app-editarbanner>
+        </form>
+      </div>
+    </div>
+
   <div class="container text-center">
     <div class="row p-5 m-3">
       <div class="col-12 col-lg-4 text-center">
-        <div class="position-relative ">
-          <img [src]="persona.foto" alt="pfp" class="pfpimg position-relative" />
-          <div class="position-absolute bottom-0 end-0">
-            <button type="button" class="btn">
+        <div class="position-relative">
+          <img [src]="pers.foto" alt="pfp" class="pfpimg position-relative" />
+          <div>
+            <button type="button" class="btn position-absolute bottom-0 end-0 translate-middle" data-bs-toggle="collapse"
+            data-bs-target="#editarfoto" aria-expanded="false" aria-controls="collapseExample"
+            aria-label="Cambiar foto de perfil">
               <fa-icon [icon]="faPenToSquare"></fa-icon>
             </button>
           </div>
         </div>
+
+        <div class="collapse" id="editarfoto">
+          <div class="card card-body">
+            <form>
+              <app-editarfoto></app-editarfoto>
+            </form>
+          </div>
+        </div>
+
         <div>
-                  <h2 class="text-center">{{persona.nombre}}{{persona.apellido}}</h2>
-        <h3 class="text-center">{{persona.titulo}}</h3>
+          <h2 class="text-center">{{pers.nombre}}{{pers.apellido}}</h2>
+          <h3 class="text-center">{{pers.titulo}}</h3>
         </div>
       </div>
       <div class="col-12 col-lg-8 position-relative pt-5">
-          <h4 class="text-center">Sobre mi</h4>
-          <p class="text-center">
-            {{persona.descripcion}}
-          </p>
-          <div class="position-absolute bottom-50 end-0">
-            <button type="button" class="btn">
-              <fa-icon [icon]="faPenToSquare"></fa-icon>
-            </button>
+        <h4 class="text-center">Sobre mi</h4>
+        <p class="text-center">
+          {{pers.descripcion}}
+        </p>
+        <div class="position-absolute bottom-0 end-0">
+          <button type="button" class="btn" data-bs-toggle="collapse"
+          data-bs-target="#editardesc" aria-expanded="false" aria-controls="collapseExample"
+          aria-label="Editar descripcion">
+            <fa-icon [icon]="faPenToSquare"></fa-icon>
+          </button>
+        </div>
+
+        <div class="collapse" id="editardesc">
+          <div class="card card-body">
+            <form>
+              <app-editar></app-editar>
+            </form>
           </div>
+        </div>
+
       </div>
+
+
+      
     </div>
   </div>
 </div>

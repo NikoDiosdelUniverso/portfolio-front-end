@@ -13,15 +13,15 @@ export class ExperienciaComponent implements OnInit {
   faPenToSquare = faPenToSquare;
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
-  experiencialist:any;
-  experiencia: experiencia= new experiencia("","","","","","")
+  experiencialist: experiencia[] = []
+ 
 
-  constructor(private datosPortfolio:PortfolioService) { }
+  constructor(private datosPortfolio: PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.getExperiencia().subscribe(data =>{
-      console.log(data); 
-      this.experiencia=data;
+    this.datosPortfolio.getExperiencia().subscribe(data => {
+      console.log(data);
+      this.experiencialist = data;
     });
   }
 }

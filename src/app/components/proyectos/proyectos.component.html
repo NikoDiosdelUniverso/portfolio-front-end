@@ -1,13 +1,6 @@
 <div class="position-relative">
     <h4>Proyectos</h4>
-    <div class="position-absolute top-0 end-0">
-        <button type="button" class="btn">
-            <fa-icon [icon]="faPenToSquare"></fa-icon>
-         </button>
-         <button type="button" class="btn" aria-label="Close">
-            <fa-icon [icon]="faXmark"></fa-icon>
-         </button>
-    </div>
+
 </div>
 <div class="content-container p-3 mb-5 shadow">
     <div class="row g-3">
@@ -17,15 +10,23 @@
                     <div class="col">
                         <div class="card border-light shadow-sm m-3" style="width: 18rem;">
                             <div class="position-relative gatitos">
-                                <img [src]="proyecto.imagen" class="card-img-top" alt="gatitos">
+                                <img [src]="proyecto.imagen" class="card-img-top" alt="imagen del proyecto">
                                 <div class="position-absolute top-50 start-50 translate-middle overlay">
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">{{proyecto.proyecto}}</h5>
+                                <h5 class="card-title">{{proyecto.nombre}}</h5>
+                                <div class="position-absolute top-0 end-0">
+                                    <button type="button" class="btn" aria-label="Editar educacion" data-bs-toggle="collapse" data-bs-target="#formeditproyecto">
+                                        <fa-icon [icon]="faPenToSquare"></fa-icon>
+                                     </button>
+                                     <button type="button" class="btn" aria-label="Eliminar proyecto">
+                                        <fa-icon [icon]="faXmark"></fa-icon>
+                                     </button>
+                                </div>
                                 <p class="card-text">{{proyecto.descripcion}}</p>
-                                <a [href]="proyecto.sitio" class="btn btn-dark mx-2">Sitio</a>
-                                <a [href]="proyecto.github" class="btn btn-dark">Código</a>
+                                <a [href]="proyecto.linkSitio" class="btn btn-dark mx-2">Sitio</a>
+                                <a [href]="proyecto.linkCodigo" class="btn btn-dark">Código</a>
                             </div>
                         </div>
                     </div>
@@ -33,7 +34,20 @@
             </ul>
         </div>
     </div>
-    <button type="button" class="btn">
+    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#formproyecto" aria-expanded="false" aria-controls="collapseExample" aria-label="Agregar proyecto">
         <fa-icon [icon]="faPlusCircle"></fa-icon>
-     </button>
+      </button>
+     <div class="collapse" id="formproyecto">
+        <div class="card card-body">
+   <form>
+   <app-newproyecto></app-newproyecto> 
+   </form>
+        </div>
+     </div>
+  
+  <div class="collapse" id="formeditproyecto">
+     <form>
+      <app-editproyecto></app-editproyecto>   
+     </form>
+  </div>
 </div>

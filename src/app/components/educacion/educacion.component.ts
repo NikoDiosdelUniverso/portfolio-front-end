@@ -14,16 +14,33 @@ export class EducacionComponent implements OnInit {
   faPenToSquare = faPenToSquare;
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
-  educacionlist:any;
-  educacion: educacion = new educacion("","","","","","")
 
-  constructor(private datosPortfolio:PortfolioService) { }
+  educacionlist: educacion[] = []
+
+  constructor(private datosPortfolio: PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.getEducacion().subscribe(data =>{
-      console.log(data); 
-      this.educacion=data;
+    this.datosPortfolio.getEducacion().subscribe(data => {
+      console.log(data);
+      this.educacionlist = data;
     });
   }
+  isLogged() {
+    return true;
+  }
+
+  borrar(id?: number) {
+    if (id != undefined) {
+      this.datosPortfolio.deleteEducacion(id).subscribe(
+        data => {
+          this.datosPortfolio.getEducacion();
+        }, err => {
+          alert("No se pudo eliminar")
+        }
+      )
+    }
+  }
+
+
 }
 

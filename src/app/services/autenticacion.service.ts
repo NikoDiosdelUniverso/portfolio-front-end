@@ -1,28 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs';
+import { User } from '../user';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AutenticacionService {
-url = ""
-currentUserSubject: BehaviorSubject<any>;
-  constructor(private http:HttpClient) { 
-    console.log("El servicio de autenticacion esta funcionando");
-    this.currentUserSubject= new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentuser') || '{}'))
-  }
-  IniciarSesion(credenciales:any):Observable<any>{
-    return this.http.post(this.url, credenciales).pipe(map(data=>{
-      sessionStorage.setItem('currentUser', JSON.stringify(data));
-      this.currentUserSubject.next(data);
+  url = "http://localhost:3307/auth"
+  user: User  = new User();
 
-      return data;
-    }))
+  constructor(private http: HttpClient ) {
   }
 
-  get UsuarioAutenticado() {
-    return this.currentUserSubject.value;
+
+  login(userId: string, password: string) {
+      return this.http.post<any>(this.url+"/login/", { userId, password })
+          .pipe(map(user => {
+              // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
+              user.authdata = window.btoa(userId + ':' + password);
+              localStorage.setItem('user', JSON.stringify(user));
+              return user;
+          }));
+  }
+
+  logout() {
+      // remove user from local storage to log user out
+      localStorage.removeItem('user');
   }
 }
+
+
+
+
+ 

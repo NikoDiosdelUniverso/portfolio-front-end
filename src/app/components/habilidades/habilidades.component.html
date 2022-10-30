@@ -1,21 +1,27 @@
 <div class="position-relative">
-    <h4>Skills</h4>
-    <div class="position-absolute top-0 end-0">
-        <button type="button" class="btn">
-            <fa-icon [icon]="faPenToSquare"></fa-icon>
-        </button>
-        <button type="button" class="btn" aria-label="Close">
-            <fa-icon [icon]="faXmark"></fa-icon>
-        </button>
-    </div>
+    <h4>Habilidades y tecnologias</h4>
+
 </div>
 <div class="content-container p-3 mb-5 shadow">
     <div class="row row-cols-4 row-cols-sm-6 row-cols-md-8 row-cols-lg-12">
-        <div  class=" text-center col g-5" *ngFor="let skill of skillslist">
-            <img [src]="skill.imagen" class="skillimage">
+        <div  class=" text-center col g-5 position-relative" *ngFor="let skill of skillslist">
+                <div class="position-absolute top-0 end-50 translate-middle">
+        <button type="button" class="btn" aria-label="Eliminar habilidad">
+            <fa-icon [icon]="faXmark"></fa-icon>
+        </button>
+    </div>
+            <img [src]="skill.logo" class="skillimage">
         </div>
     </div>
-    <button type="button" class="btn">
+    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#habform" aria-expanded="false" aria-controls="collapseExample" aria-label="Agregar habilidad">
         <fa-icon [icon]="faPlusCircle"></fa-icon>
-    </button>
+      </button>
+     <div class="collapse" id="habform">
+        <div class="card card-body">
+   <form>
+   <app-newhab></app-newhab> 
+   </form>
+        </div>
+     </div>
+  
 </div>

@@ -1,14 +1,5 @@
 <div class="position-relative">
    <h4>Educaci&oacute;n</h4>
-   <div class="position-absolute top-0 end-0">
-      <button type="button" class="btn">
-         <fa-icon [icon]="faPenToSquare"></fa-icon>
-      </button>
-      <button type="button" class="btn" aria-label="Close">
-         <fa-icon [icon]="faXmark"></fa-icon>
-      </button>
-   </div>
-
 </div>
 
 <div class="content-container p-3 mb-5 shadow">
@@ -16,17 +7,46 @@
       <li class="list-group-item" *ngFor="let educacion of educacionlist">
          <div class="card">
             <div class="card-header">
-             <h5>{{educacion.titulo}}</h5>
+               <h5>{{educacion.titulo}}</h5>
+
+               <div class="position-absolute top-0 end-0">
+                  <button type="button" class="btn" aria-label="Editar educacion" data-bs-toggle="collapse" data-bs-target="#formularioeditar">
+                     <fa-icon [icon]="faPenToSquare"></fa-icon>
+                  </button>
+                  <button type="button" class="btn" aria-label="Eliminar educacion" (click)="borrar()">
+                     <fa-icon [icon]="faXmark"></fa-icon>
+                  </button>
+               </div>
+
             </div>
             <ul class="list-group list-group-flush">
-               <li class="list-group-item"><img [src]="educacion.logo" style="height: 70px; background-color: black;" class="m-2 rounded float-end">{{educacion.establecimiento}} </li>
+               <li class="list-group-item"><img [src]="educacion.logo" style="height: 70px; background-color: black;"
+                     class="m-2 rounded float-end">{{educacion.establecimiento}} </li>
                <li class="list-group-item">{{educacion.inicio}} - {{educacion.fin}} </li>
             </ul>
          </div>
       </li>
    </ul>
 
-   <button type="button" class="btn">
+   <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Agregar educacion">
       <fa-icon [icon]="faPlusCircle"></fa-icon>
-   </button>
+    </button>
+   <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+
+ <form>
+   new educacion 
+  <!--<app-new></app-new> -->
+ </form>
+
+      </div>
+   </div>
+
+<div class="collapse" id="formularioeditar">
+   <form>
+    formulario edicion educacion   
+     <!--<app-editeducacion></app-editeducacion> -->
+   </form>
+</div>
+
 </div>

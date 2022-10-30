@@ -11,7 +11,7 @@ import { persona } from 'src/app/model/persona.model';
   styleUrls: ['./acerca-de.component.css']
 })
 export class AcercaDeComponent implements OnInit {
-  persona: persona= new persona("","","","","","");
+  pers: persona;
   faPenToSquare = faPenToSquare;
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
@@ -20,10 +20,10 @@ export class AcercaDeComponent implements OnInit {
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.getPersona().subscribe(data =>{
+    this.datosPortfolio.getPersona(1).subscribe(data =>{
       console.log(data); 
-      this.persona=data;
+      this.pers=data;
     });
   }
 
-}
+} 

@@ -1,26 +1,46 @@
 <div class="position-relative">
-    <div class="position-absolute top-0 end-0">
-    <button type="button" class="btn"> <fa-icon [icon]="faPenToSquare"></fa-icon></button>
-     <button type="button" class="btn" aria-label="Eliminar"><fa-icon [icon]="faXmark"></fa-icon></button>
-   </div>
+
    <h4>Experiencia</h4>
-     </div>
-     <div class="content-container p-3 mb-5 shadow">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" *ngFor="let experiencia of experiencialist">
-           <div class="card">
-              <div class="card-header">
+</div>
+<div class="content-container p-3 mb-5 shadow">
+   <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let experiencia of experiencialist">
+         <div class="card">
+            <div class="card-header">
                <h5>{{experiencia.posicion}}</h5>
-              </div>
-              <ul class="list-group list-group-flush">
-                 <li class="list-group-item"><img [src]="experiencia.logo" style="height: 70px; background-color: black;" class="m-2 rounded float-end">{{experiencia.empresa}} </li>
-                 <li class="list-group-item">{{experiencia.inicio}} - {{experiencia.fin}} </li>
-                 <li class="list-group-item">{{experiencia.descripcion}} </li>
-              </ul>
-           </div>
-        </li>
-     </ul>
-    <button type="button" class="btn"><fa-icon [icon]="faPlusCircle"></fa-icon></button>
-    </div>
-   
-    
+               <div class="position-absolute top-0 end-0">
+                  <button type="button" class="btn" aria-label="editar experiencia" data-bs-toggle="collapse" data-bs-target="#formularioeditarexp">
+                     <fa-icon [icon]="faPenToSquare"></fa-icon>
+                  </button>
+                  <button type="button" class="btn" aria-label="Eliminar">
+                     <fa-icon [icon]="faXmark"></fa-icon>
+                  </button>
+               </div>
+            </div>
+            <ul class="list-group list-group-flush">
+               <li class="list-group-item"><img [src]="experiencia.logo" style="height: 70px; background-color: black;"
+                     class="m-2 rounded float-end">{{experiencia.empresa}} </li>
+               <li class="list-group-item">{{experiencia.inicio}} - {{experiencia.fin}} </li>
+               <li class="list-group-item">{{experiencia.descripcion}} </li>
+            </ul>
+         </div>
+      </li>
+   </ul>
+   <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#expform" aria-expanded="false"
+      aria-controls="collapseExample" aria-label="Agregar experiencia">
+      <fa-icon [icon]="faPlusCircle"></fa-icon>
+   </button>
+   <div class="collapse" id="expform">
+      <div class="card card-body">
+         <form>
+            <app-newexp></app-newexp>
+         </form>
+      </div>
+   </div>
+
+   <div class="collapse" id="formularioeditarexp">
+      <form>
+         <app-editexp></app-editexp>
+      </form>
+   </div>
+</div>

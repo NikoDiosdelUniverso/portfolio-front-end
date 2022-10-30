@@ -15,15 +15,14 @@ export class ProyectosComponent implements OnInit {
   faPenToSquare = faPenToSquare;
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
-  proyectoslist:any;
-  proyecto: proyectos= new proyectos("","","","","");
-
+proyectoslist: proyectos[] = []
+  
   constructor(private datosPortfolio:PortfolioService) { }
 
   ngOnInit(): void {
     this.datosPortfolio.getProyectos().subscribe(data =>{
       console.log(data); 
-      this.proyecto=data;
+      this.proyectoslist=data;
     });
   }
 
