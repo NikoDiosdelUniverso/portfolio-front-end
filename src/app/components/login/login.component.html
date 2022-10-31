@@ -11,14 +11,14 @@
             <h3>Iniciar sesión</h3>
           </div>
           <div class="card-body">
-            <form [formGroup]="loginForm" id="loginForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="loginForm" id="loginForm" (ngSubmit)="signIn()">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Usuario</label>
                 <input type="text" formControlName="userId"
-                  [ngClass]="{'is-invalid': Usuario?.errors && Usuario?.touched, 'is-valid': !Usuario?.errors && Usuario?.touched }"
+                  [ngClass]="{'is-invalid': Usuario.errors && Usuario.touched, 'is-valid': !Usuario.errors && Usuario.touched }"
                   class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div *ngIf="Usuario?.errors && Usuario?.touched">
-                  <p *ngIf="Usuario?.hasError('required')" class="text-danger">
+                <div *ngIf="Usuario.errors && Usuario.touched">
+                  <p *ngIf="Usuario.hasError('required')" class="text-danger">
                     El usuario es requerido
                   </p>
                 </div>
@@ -26,10 +26,10 @@
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                 <input type="password" formControlName="password"
-                  [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched }"
+                  [ngClass]="{'is-invalid': Password.errors && Password.touched, 'is-valid': !Password.errors && Password.touched }"
                   class="form-control" id="exampleInputPassword1">
-                <div *ngIf="Password?.errors && Password?.touched">
-                  <p *ngIf="Password?.hasError('required')" class="text-danger">
+                <div *ngIf="Password.errors && Password.touched">
+                  <p *ngIf="Password.hasError('required')" class="text-danger">
                     La contraseña es requerida
                   </p>
                 </div>

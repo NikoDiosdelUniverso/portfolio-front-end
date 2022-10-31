@@ -5,8 +5,8 @@ import { educacion, experiencia, habilidades, persona, proyectos } from 'src/app
 @Injectable({
   providedIn: 'root'
 })
-export class PortfolioService {
-  url = 'http://localhost:8080'
+export class PortfolioService { 
+  url = 'https://portfolio-abc.herokuapp.com'
   constructor(private http: HttpClient) { }
 
   public getPersonasList(): Observable<persona[]> {

@@ -4,6 +4,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { persona } from 'src/app/model/persona.model';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-acerca-de',
@@ -15,15 +16,18 @@ export class AcercaDeComponent implements OnInit {
   faPenToSquare = faPenToSquare;
   faPlusCircle = faPlusCircle;
   faXmark = faXmark;
-  miPortfolio:any;
+  
 
-  constructor(private datosPortfolio:PortfolioService) { }
+  constructor(private datosPortfolio: PortfolioService, private authService: AutenticacionService) { }
 
   ngOnInit(): void {
-    this.datosPortfolio.getPersona(1).subscribe(data =>{
-      console.log(data); 
-      this.pers=data;
+    this.datosPortfolio.getPersona(1).subscribe(data => {
+      console.log(data);
+      this.pers = data;
     });
   }
 
+  isLogged() {
+    return this.authService.isLogged();
+  }
 } 

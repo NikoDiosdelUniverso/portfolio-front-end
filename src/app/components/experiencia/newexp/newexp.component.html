@@ -1,31 +1,32 @@
 <div class="container">
     <div>
         <div>
-            <form class="row">
+            <h5 class="mb-3">Agregar Experiencia</h5>
+            <form class="row" #formSend="ngForm" (ngSubmit)="onSubmit(formSend.value)">
                 <div class="form-group col-md-6">
                     <label for="posicion"> Posicion </label>
-                    <input type="text" class="form-control" id="posicion" name="posicion">
+                    <input type="text" class="form-control" id="posicion" name="posicion" [(ngModel)]="posicion">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="empresa"> Nombre de la empresa </label>
-                    <input type="text" class="form-control" id=" empresa" name="empresa">
+                    <input type="text" class="form-control" id=" empresa" name="empresa" [(ngModel)]="empresa">
                 </div>
-
+ 
                 <div class="form-group col-12">
-                    <label for="logo"> Logo de la empresa </label>
-                    <input type="file" accept="image/*" class="form-control" id="logo" name="logo">
+                    <label for="logo"> Logo de la empresa (link de la imagen) </label>
+                    <input type="text" class="form-control" id="logo" name="logo" [(ngModel)]="logo">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inicio"> Fecha de Inicio </label>
-                    <input type="text" class="form-control" id="inicio" name="inicio">
+                    <input type="text" class="form-control" id="inicio" name="inicio" [(ngModel)]="inicio">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="fin"> Fecha de finalizacion </label>
-                    <input type="text" class="form-control" id="fin" name="fin">
+                    <input type="text" class="form-control" id="fin" name="fin" [(ngModel)]="fin">
                 </div>
                 <div class="form-group col-12">
                     <label for="descripcion"> Detalles </label>
-                    <textarea id="descripcion" name="descripcion" class="form-control" maxlength="500">
+                    <textarea id="descripcion" name="descripcion" class="form-control" maxlength="500" [(ngModel)]="descripcion">
                     </textarea>
                 </div>
                 <div>

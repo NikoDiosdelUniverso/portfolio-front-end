@@ -6,7 +6,7 @@
     <div class="row row-cols-4 row-cols-sm-6 row-cols-md-8 row-cols-lg-12">
         <div  class=" text-center col g-5 position-relative" *ngFor="let skill of skillslist">
                 <div class="position-absolute top-0 end-50 translate-middle">
-        <button type="button" class="btn" aria-label="Eliminar habilidad">
+        <button type="button" class="btn" aria-label="Eliminar habilidad" (click)="borrar(skill.id)">
             <fa-icon [icon]="faXmark"></fa-icon>
         </button>
     </div>
@@ -25,3 +25,4 @@
      </div>
   
 </div>
+ 

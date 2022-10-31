@@ -1,42 +1,22 @@
 <div class="container-fluid content-container mb-5 shadow">
   <div class="container-fluid position-relative">
     <img [src]="pers.banner" class="mw-100" alt="banner" />
-    <div>
-      <button type="button" class="btn position-absolute bottom-0 end-0 translate-middle-x" data-bs-toggle="collapse"
-        data-bs-target="#editarbanner" aria-expanded="false" aria-controls="collapseExample"
-        aria-label="Cambiar banner">
+    <div >
+      <button type="button" class="btn btn-light position-absolute bottom-0 end-0 translate-middle-x" aria-label="Cambiar banner" routerLink="/editar/{{pers.id}}" *ngIf="isLogged">
         <fa-icon [icon]="faPenToSquare"></fa-icon>
       </button>
     </div>
   </div>
-
-   <div class="collapse" id="editarbanner">
-      <div class="card card-body">
-        <form>
-          <app-editarbanner></app-editarbanner>
-        </form>
-      </div>
-    </div>
 
   <div class="container text-center">
     <div class="row p-5 m-3">
       <div class="col-12 col-lg-4 text-center">
         <div class="position-relative">
           <img [src]="pers.foto" alt="pfp" class="pfpimg position-relative" />
-          <div>
-            <button type="button" class="btn position-absolute bottom-0 end-0 translate-middle" data-bs-toggle="collapse"
-            data-bs-target="#editarfoto" aria-expanded="false" aria-controls="collapseExample"
-            aria-label="Cambiar foto de perfil">
+          <div *ngIf="isLogged">
+            <button type="button" class="btn position-absolute bottom-0 end-0 translate-middle" aria-label="Cambiar foto de perfil" routerLink="/editar/{{pers.id}}">
               <fa-icon [icon]="faPenToSquare"></fa-icon>
             </button>
-          </div>
-        </div>
-
-        <div class="collapse" id="editarfoto">
-          <div class="card card-body">
-            <form>
-              <app-editarfoto></app-editarfoto>
-            </form>
           </div>
         </div>
 
@@ -50,26 +30,12 @@
         <p class="text-center">
           {{pers.descripcion}}
         </p>
-        <div class="position-absolute bottom-0 end-0">
-          <button type="button" class="btn" data-bs-toggle="collapse"
-          data-bs-target="#editardesc" aria-expanded="false" aria-controls="collapseExample"
-          aria-label="Editar descripcion">
+        <div class="position-absolute bottom-0 end-0" *ngIf="isLogged">
+          <button type="button" class="btn" aria-label="Editar descripcion" routerLink="/editar/{{pers.id}}">
             <fa-icon [icon]="faPenToSquare"></fa-icon>
           </button>
         </div>
-
-        <div class="collapse" id="editardesc">
-          <div class="card card-body">
-            <form>
-              <app-editar></app-editar>
-            </form>
-          </div>
-        </div>
-
       </div>
-
-
-      
     </div>
   </div>
 </div>

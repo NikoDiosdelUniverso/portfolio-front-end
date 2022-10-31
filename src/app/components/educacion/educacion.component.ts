@@ -4,6 +4,8 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { educacion } from 'src/app/model/persona.model';
+import { Router } from '@angular/router';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-educacion',
@@ -17,7 +19,7 @@ export class EducacionComponent implements OnInit {
 
   educacionlist: educacion[] = []
 
-  constructor(private datosPortfolio: PortfolioService) { }
+  constructor(private datosPortfolio: PortfolioService, private ruta: Router, private authService: AutenticacionService) { }
 
   ngOnInit(): void {
     this.datosPortfolio.getEducacion().subscribe(data => {
@@ -25,22 +27,29 @@ export class EducacionComponent implements OnInit {
       this.educacionlist = data;
     });
   }
-  isLogged() {
-    return true;
+ 
+  cargarEducacion(): void{
+    this.datosPortfolio.getEducacion().subscribe(
+      data =>{
+        this.educacionlist = data;
+      }
+    )
   }
 
   borrar(id?: number) {
     if (id != undefined) {
       this.datosPortfolio.deleteEducacion(id).subscribe(
         data => {
-          this.datosPortfolio.getEducacion();
-        }, err => {
-          alert("No se pudo eliminar")
-        }
+          this.cargarEducacion();
+          this.ruta.navigate(['']);
+        }, err => { alert("No se pudo eliminar")}
       )
     }
   }
 
+  isLogged(){
+    return this.authService.isLogged();
+      }
 
 }
 

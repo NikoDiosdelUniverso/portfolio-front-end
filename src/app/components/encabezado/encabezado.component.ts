@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 
 
@@ -8,11 +9,21 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: ['./encabezado.component.css']
 })
 export class EncabezadoComponent implements OnInit {
-
-  constructor(private datosPortfolio:PortfolioService) { }
+  login: string;
+  constructor(private authService: AutenticacionService) { }
 
   ngOnInit(): void {
-
+console.log("Logueado: "+this.isLogged());
   }
 
+  isLogged() {
+    return this.authService.isLogged();
+  }
+
+  logintext() {
+    let login= "Login";
+    if (this.isLogged()){
+      login= "Logout";
+    };
+  }
 }

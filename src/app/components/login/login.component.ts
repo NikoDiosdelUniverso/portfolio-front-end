@@ -13,23 +13,38 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  url: string | undefined;
+
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authenticationService: AutenticacionService) 
-    {
+    private authenticationService: AutenticacionService) { }
+
+  ngOnInit() {
     this.loginForm = this.formBuilder.group({
       userId: ['', Validators.required],
       password: ['', Validators.required]
     });
-  }
-
-  ngOnInit() {
     // reset login status
     this.authenticationService.logout();
-    this.url = "";
+    console.log("is logged: "+ this.isLogged())
+  }
+
+  get formControls() {
+    return this.loginForm.controls;
+  }
+
+  signIn(){
+    this.submitted = true;
+    if(this.loginForm.invalid){
+      return;
+    } else if(this.loginForm.value.userId === this.authenticationService.user.userId && this.loginForm.value.password === this.authenticationService.user.password){
+      this.authenticationService.iniciarSesion(this.loginForm.value);
+    } else {
+      console.log('login_invalid');
+    }
+    console.log('Respuesta del servicio de login --> ', this.isLogged());
+    this.router.navigateByUrl('');
   }
 
   get Usuario() {
@@ -38,37 +53,10 @@ export class LoginComponent implements OnInit {
   get Password() {
     return this.loginForm.get('password');
   }
-//los datos no estan llegando de la DB
-  login() {
-    let userLogged = 'invalid_form';
-    console.log('Valores del form --> ', this.loginForm.value);
-    if (this.loginForm.valid) {
-      if (this.loginForm.value.userId === this.authenticationService.user.userId && this.loginForm.value.password === this.authenticationService.user.password) {
-        userLogged = 'login_valid';
-      } else {
-        userLogged = 'login_invalid';
-      }
-      console.log('Respuesta del servicio de login --> ', userLogged);
-      console.log('ELIMINAR ESTO DESPUES---', this.authenticationService.user.userId )
-    }
 
-    return userLogged;
+  isLogged() {
+    return this.authenticationService.isLogged();
   }
-
-  onSubmit() {
-    console.log("Enviar")
-    this.submitted = true;
-let validLogin= this.login();
-    if (validLogin = 'login_invalid'  || 'invalid_form' ) {
-   return;
-    }
-
-       this.loading = true;
-    this.authenticationService.login(this.Usuario?.value, this.Password?.value);
-    this.router.navigate([this.url]);
-  }
-
-
 }
 
 

@@ -1,14 +1,18 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <form >
-                <div class="form-group">
-                    <input type="file" accept="image/*" class="form-control" id="logohab" name="logohab">
-                </div>
-                <button class="btn btn-dark">
-                    Guardar
-                </button>
-            </form>
+<div>
+    <h5 class="mb-3">Agregar Habilidad</h5>
+    <form #formSend="ngForm" (ngSubmit)="onSubmit(formSend.value)" class="row">
+        <div class="form-group mb-3 col-md-6">
+            <label for="logo"> Link del logo o imagen </label>
+            <input type="text" class="form-control" id="logohab" name="logohab" [(ngModel)]="logo">
         </div>
-    </div>
+        <div class="form-group mb-3 col-md-6">
+            <label for="nombre"> Nombre </label>
+            <input type="text" class="form-control" id="nombrehab" name="nombrehab" [(ngModel)]="nombre">
+        </div>
+        <div>
+            <button class="btn btn-dark">
+                Guardar
+            </button>
+        </div>
+    </form>
 </div>

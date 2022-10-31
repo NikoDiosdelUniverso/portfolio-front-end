@@ -1,37 +1,47 @@
 <div class="container">
         <div>
-            <form class="row">
-                <div class="form-group col-md-6">
+            <div class="col-sm-auto"></div>
+            <div class="card p-4 m-5 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Editar Experiencia</h5>
+      <form (ngSubmit)="onUpdate(formSend.value)" class="row" #formSend="ngForm">
+                <div class="form-group col-md-6 mb-3">
                     <label for="editposicion"> Posicion </label>
-                    <input type="text" class="form-control" id="posicion" name="posicion">
+                    <input type="text" class="form-control" id="posicion" name="posicion" [(ngModel)]="exp.posicion">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 mb-3">
                     <label for="editempresa"> Nombre de la empresa </label>
-                    <input type="text" class="form-control" id=" editempresa" name=" editempresa">
+                    <input type="text" class="form-control" id=" editempresa" name=" editempresa" [(ngModel)]="exp.empresa">
                 </div>
 
-                <div class="form-group col-12">
-                    <label for="editlogo"> Logo de la empresa </label>
-                    <input type="file" accept="image/*" class="form-control" id="editlogo" name="editlogo">
+                <div class="form-group col-12 mb-3">
+                    <label for="editlogo"> Logo de la empresa(link de la imagen) </label>
+                    <input type="text" class="form-control" id="editlogo" name="editlogo" [(ngModel)]="exp.logo">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 mb-3">
                     <label for="editinicio"> Fecha de Inicio </label>
-                    <input type="text" class="form-control" id="editinicio" name="editinicio">
+                    <input type="text" class="form-control" id="editinicio" name="editinicio" [(ngModel)]="exp.inicio">
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 mb-3">
                     <label for="editfin"> Fecha de finalizacion </label>
-                    <input type="text" class="form-control" id="editfin" name="editfin">
+                    <input type="text" class="form-control" id="editfin" name="editfin" [(ngModel)]="exp.fin">
                 </div>
-                <div class="form-group col-12">
+                <div class="form-group col-12 mb-3">
                     <label for="editdescripcion"> Detalles </label>
-                    <textarea id="editdescripcion" name="descripcion" class="form-control" maxlength="500">
+                    <textarea id="editdescripcion" name="descripcion" class="form-control" maxlength="500" [(ngModel)]="exp.descripcion">
                     </textarea>
                 </div> 
-                <div>
+                <div> 
                     <button class="btn btn-dark">
                         Agregar
                     </button>
                 </div>
             </form>
+                </div>
+            </div>
+
+
+      
+
         </div>
     </div>

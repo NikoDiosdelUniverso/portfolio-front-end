@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
 import { User } from '../user';
 
 
@@ -8,26 +7,24 @@ import { User } from '../user';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url = "http://localhost:3307/auth"
+  url = "https://portfolio-abc.herokuapp.com/auth/login"
   user: User  = new User();
 
   constructor(private http: HttpClient ) {
   }
 
+  iniciarSesion(usuario :User) {
+    localStorage.setItem('token', JSON.stringify(usuario));
+    return this.http.post<any>(this.url, usuario);
+  }
 
-  login(userId: string, password: string) {
-      return this.http.post<any>(this.url+"/login/", { userId, password })
-          .pipe(map(user => {
-              // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
-              user.authdata = window.btoa(userId + ':' + password);
-              localStorage.setItem('user', JSON.stringify(user));
-              return user;
-          }));
+  public isLogged(){
+    return localStorage.getItem('token') !== null;
   }
 
   logout() {
       // remove user from local storage to log user out
-      localStorage.removeItem('user');
+      localStorage.removeItem('token');
   }
 }
 

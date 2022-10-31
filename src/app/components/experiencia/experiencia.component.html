@@ -9,10 +9,10 @@
             <div class="card-header">
                <h5>{{experiencia.posicion}}</h5>
                <div class="position-absolute top-0 end-0">
-                  <button type="button" class="btn" aria-label="editar experiencia" data-bs-toggle="collapse" data-bs-target="#formularioeditarexp">
+                  <button type="button" class="btn" aria-label="editar experiencia" routerLink="/editexp/{{experiencia.id}}">
                      <fa-icon [icon]="faPenToSquare"></fa-icon>
                   </button>
-                  <button type="button" class="btn" aria-label="Eliminar">
+                  <button type="button" class="btn" aria-label="Eliminar experiencia" (click)="borrar(experiencia.id)">
                      <fa-icon [icon]="faXmark"></fa-icon>
                   </button>
                </div>
@@ -36,11 +36,5 @@
             <app-newexp></app-newexp>
          </form>
       </div>
-   </div>
-
-   <div class="collapse" id="formularioeditarexp">
-      <form>
-         <app-editexp></app-editexp>
-      </form>
    </div>
 </div>

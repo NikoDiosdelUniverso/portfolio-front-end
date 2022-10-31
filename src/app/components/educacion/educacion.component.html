@@ -9,11 +9,11 @@
             <div class="card-header">
                <h5>{{educacion.titulo}}</h5>
 
-               <div class="position-absolute top-0 end-0">
-                  <button type="button" class="btn" aria-label="Editar educacion" data-bs-toggle="collapse" data-bs-target="#formularioeditar">
+               <div class="position-absolute top-0 end-0" *ngIf="isLogged">
+                  <button type="button" class="btn" aria-label="Editar educacion" data-bs-toggle="collapse" data-bs-target="#formularioeditar" routerLink="/editedu/{{educacion.id}}">
                      <fa-icon [icon]="faPenToSquare"></fa-icon>
                   </button>
-                  <button type="button" class="btn" aria-label="Eliminar educacion" (click)="borrar()">
+                  <button type="button" class="btn" aria-label="Eliminar educacion" (click)="borrar(educacion.id)">
                      <fa-icon [icon]="faXmark"></fa-icon>
                   </button>
                </div>
@@ -28,25 +28,14 @@
       </li>
    </ul>
 
-   <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Agregar educacion">
+   <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" aria-label="Agregar educacion" *ngIf="isLogged">
       <fa-icon [icon]="faPlusCircle"></fa-icon>
     </button>
    <div class="collapse" id="collapseExample">
       <div class="card card-body">
 
- <form>
-   new educacion 
-  <!--<app-new></app-new> -->
- </form>
+   <app-new></app-new>  
 
       </div>
    </div>
-
-<div class="collapse" id="formularioeditar">
-   <form>
-    formulario edicion educacion   
-     <!--<app-editeducacion></app-editeducacion> -->
-   </form>
-</div>
-
 </div>

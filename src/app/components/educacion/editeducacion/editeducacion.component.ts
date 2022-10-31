@@ -9,7 +9,7 @@ import { PortfolioService } from 'src/app/services/portfolio.service';
   styleUrls: ['./editeducacion.component.css']
 })
 export class EditeducacionComponent implements OnInit {
-  educacion: educacion;
+  edu: educacion;
 
   constructor(
     private eduService: PortfolioService,
@@ -18,21 +18,22 @@ export class EditeducacionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.activatedRouter.snapshot.params['id'];
+    const id: number = this.activatedRouter.snapshot.params['id'];
     this.eduService.detailEdu(id).subscribe(
       data=>{
-        this.educacion= data; 
+        this.edu= data; 
+        console.log(data);
       }, err => {
         alert("Error al modificar");
         this.ruta.navigate(['']);
       }
     )
   }
+ 
 
-
-  onUpdate(): void {
-    const id = this.activatedRouter.snapshot.params['id'];
-    this.eduService.updateEducacion(id, this.educacion).subscribe(
+  onUpdate(value: any): void {
+    const id: number = this.activatedRouter.snapshot.params['id'];
+    this.eduService.updateEducacion(id, this.edu).subscribe(
       data => {
         this.ruta.navigate(['']);
       }, err => {

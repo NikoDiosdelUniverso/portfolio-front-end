@@ -2,23 +2,7 @@ body {
   color: #393d46;
 }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: #393d46;
-}
 
-.gatitos:hover .overlay {
-  opacity: 25%;
-}
 
-.skillimage {
-height:50px;
-}
 
-.pfpimg {
-  height: 222px;
-  width: 222px;
-}
+

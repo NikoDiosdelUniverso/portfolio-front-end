@@ -24,8 +24,7 @@ import { EditexpComponent } from './components/experiencia/editexp/editexp.compo
 import { NewhabComponent } from './components/habilidades/newhab/newhab.component';
 import { NewproyectoComponent } from './components/proyectos/newproyecto/newproyecto.component';
 import { EditproyectoComponent } from './components/proyectos/editproyecto/editproyecto.component';
-import { EditarfotoComponent } from './components/acerca-de/editarfoto/editarfoto.component';
-import { EditarbannerComponent } from './components/acerca-de/editarbanner/editarbanner.component';
+
 
 
 @NgModule({
@@ -46,9 +45,7 @@ import { EditarbannerComponent } from './components/acerca-de/editarbanner/edita
     EditexpComponent,
     NewhabComponent,
     NewproyectoComponent,
-    EditproyectoComponent,
-    EditarfotoComponent,
-    EditarbannerComponent
+    EditproyectoComponent
   ],
   imports: [
     BrowserModule,
