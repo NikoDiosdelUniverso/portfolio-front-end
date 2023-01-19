@@ -6,7 +6,7 @@ import { educacion, experiencia, habilidades, persona, proyectos } from 'src/app
   providedIn: 'root'
 })
 export class PortfolioService { 
-  url = 'https://portfolio-abc.herokuapp.com'
+  url = 'https://portfolio-back-end-wucr.onrender.com'
   constructor(private http: HttpClient) { }
 
   public getPersonasList(): Observable<persona[]> {

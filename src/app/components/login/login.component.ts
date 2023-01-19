@@ -30,21 +30,19 @@ export class LoginComponent implements OnInit {
     console.log("is logged: "+ this.isLogged())
   }
 
-  get formControls() {
-    return this.loginForm.controls;
-  }
-
   signIn(){
     this.submitted = true;
-    if(this.loginForm.invalid){
+    if (this.loginForm.invalid) {
       return;
-    } else if(this.loginForm.value.userId === this.authenticationService.user.userId && this.loginForm.value.password === this.authenticationService.user.password){
-      this.authenticationService.iniciarSesion(this.loginForm.value);
-    } else {
-      console.log('login_invalid');
+    }{
+      this.authenticationService.iniciarSesion(this.loginForm.value); 
     }
     console.log('Respuesta del servicio de login --> ', this.isLogged());
     this.router.navigateByUrl('');
+  }
+
+  get formControls() {
+    return this.loginForm.controls;
   }
 
   get Usuario() {

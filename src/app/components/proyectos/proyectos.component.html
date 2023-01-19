@@ -16,13 +16,15 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{proyecto.nombre}}</h5>
-                                <div class="position-absolute top-0 end-0 btn-group">
-                                    <button type="button" class="btn btn-light" aria-label="Editar educacion" routerLink="/editpro/{{proyecto.id}}">
+                                <div class="position-absolute top-0 end-0 btn-group" *ngIf="isLogged()">
+                                    <button type="button" class="btn btn-light" aria-label="Editar educacion"
+                                        routerLink="/editpro/{{proyecto.id}}">
                                         <fa-icon [icon]="faPenToSquare"></fa-icon>
-                                     </button>
-                                     <button type="button" class="btn btn-light" aria-label="Eliminar proyecto" (click)="borrar(proyecto.id)">
+                                    </button>
+                                    <button type="button" class="btn btn-light" aria-label="Eliminar proyecto"
+                                        (click)="borrar(proyecto.id)">
                                         <fa-icon [icon]="faXmark"></fa-icon>
-                                     </button>
+                                    </button>
                                 </div>
                                 <p class="card-text">{{proyecto.descripcion}}</p>
                                 <a [href]="proyecto.linkSitio" class="btn btn-dark mx-2">Sitio</a>
@@ -34,15 +36,19 @@
             </ul>
         </div>
     </div>
-    <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#formproyecto" aria-expanded="false" aria-controls="collapseExample" aria-label="Agregar proyecto">
-        <fa-icon [icon]="faPlusCircle"></fa-icon>
-      </button>
-     <div class="collapse" id="formproyecto">
+    <div *ngIf="isLogged()">
+        <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#formproyecto" aria-expanded="false"
+            aria-controls="collapseExample" aria-label="Agregar proyecto">
+            <fa-icon [icon]="faPlusCircle"></fa-icon>
+        </button>
+    </div>
+
+    <div class="collapse" id="formproyecto">
         <div class="card card-body">
-   <form>
-   <app-newproyecto></app-newproyecto> 
-   </form>
+            <form>
+                <app-newproyecto></app-newproyecto>
+            </form>
         </div>
-     </div>
-  
+    </div>
+
 </div>

@@ -7,28 +7,31 @@ import { User } from '../user';
   providedIn: 'root'
 })
 export class AutenticacionService {
-  url = "https://portfolio-abc.herokuapp.com/auth/login"
-  user: User  = new User();
+  url = "https://portfolio-back-end-wucr.onrender.com/auth/login"
+  user: User = new User();
 
-  constructor(private http: HttpClient ) {
+  constructor(private http: HttpClient) {
   }
 
-  iniciarSesion(usuario :User) {
-    localStorage.setItem('token', JSON.stringify(usuario));
-    return this.http.post<any>(this.url, usuario);
+  //crea un token si el login es correcto
+  iniciarSesion(usuario: User) {
+    this.http.post<any>(this.url, usuario).subscribe((data) => {
+      console.log(data);
+      localStorage.setItem('token', JSON.stringify(usuario));
+    }, (error) => { console.error(error); });
   }
 
-  public isLogged(){
+  //si existe en token, el usuario esta logueado
+  public isLogged() {
     return localStorage.getItem('token') !== null;
   }
 
+  // elimina el token al cerrar la sesion
   logout() {
-      // remove user from local storage to log user out
-      localStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 }
 
 
 
 
- 

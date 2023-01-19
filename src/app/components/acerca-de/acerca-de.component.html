@@ -2,7 +2,7 @@
   <div class="container-fluid position-relative">
     <img [src]="pers.banner" class="mw-100" alt="banner" />
     <div >
-      <button type="button" class="btn btn-light position-absolute bottom-0 end-0 translate-middle-x" aria-label="Cambiar banner" routerLink="/editar/{{pers.id}}" *ngIf="isLogged">
+      <button type="button" class="btn btn-light position-absolute bottom-0 end-0 translate-middle-x" aria-label="Cambiar banner" routerLink="/editar/{{pers.id}}" *ngIf="isLogged()">
         <fa-icon [icon]="faPenToSquare"></fa-icon>
       </button>
     </div>
@@ -13,7 +13,7 @@
       <div class="col-12 col-lg-4 text-center">
         <div class="position-relative">
           <img [src]="pers.foto" alt="pfp" class="pfpimg position-relative" />
-          <div *ngIf="isLogged">
+          <div *ngIf="isLogged()">
             <button type="button" class="btn position-absolute bottom-0 end-0 translate-middle" aria-label="Cambiar foto de perfil" routerLink="/editar/{{pers.id}}">
               <fa-icon [icon]="faPenToSquare"></fa-icon>
             </button>
@@ -30,7 +30,7 @@
         <p class="text-center">
           {{pers.descripcion}}
         </p>
-        <div class="position-absolute bottom-0 end-0" *ngIf="isLogged">
+        <div class="position-absolute bottom-0 end-0" *ngIf="isLogged()">
           <button type="button" class="btn" aria-label="Editar descripcion" routerLink="/editar/{{pers.id}}">
             <fa-icon [icon]="faPenToSquare"></fa-icon>
           </button>
