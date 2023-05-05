@@ -24,3 +24,6 @@ body {
   .gatitos:hover .overlay {
     opacity: 25%;
   }
+  .banner-container {
+    max-height: 50vh;
+  }
